@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Indira Cinema</title>
+  <link rel="icon" type="image/png" href="img/favicon.png" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+
+    .banner-container {
+      width: 100%;
+      height: 100vh;       /* fill viewport height */
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .banner-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;      /* cover container while keeping aspect ratio */
+      object-position: center; /* always show central slice */
+      display: block;
+    }
+
+    @media (max-width: 600px) {
+      .banner-container img {
+        object-position: center center; /* vertical central slice on narrow screens */
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo"><a href="index.html" style="color: inherit; text-decoration: none;">indira</a></div>
+    <nav>
+      <a href="https://example.com" target="_blank">tickets</a>
+      <a href="spaces.html">spaces</a>
+      <a href="contact.html">contact</a>
+    </nav>
+  </header>
+
+  <main class="banner-container">
+    <img src="img/banner.jpeg" alt="Indira Cinema Banner" />
+  </main>
+
+  <footer>
+    &copy; 2025 Indira Cinema, Kolkata
+  </footer>
+
+</body>
+</html>
