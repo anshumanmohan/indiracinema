@@ -33,6 +33,15 @@ body {
   line-height: 1.5;
 }
 
+a {
+  color: white;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
 /* ============================================
    HEADER & NAVIGATION
    ============================================ */
