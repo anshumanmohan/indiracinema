@@ -23,7 +23,6 @@ function initializeNavigation() {
       <span></span>
     </div>
     <nav id="nav">
-      <a href="index.html">home</a>
       <a href="spaces.html">spaces</a>
       <a href="contact.html">contact</a>
     </nav>
@@ -42,9 +41,9 @@ function setupMobileMenu() {
   // Toggle menu when clicking hamburger/X button
   mobileToggle.addEventListener('click', () => toggleMenu(mobileToggle, nav));
 
-  // Close menu when clicking a navigation link
+  // Close menu when clicking a navigation link (instant close to prevent glitch)
   nav.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => closeMenu(mobileToggle, nav));
+    link.addEventListener('click', () => closeMenu(mobileToggle, nav, true));
   });
 
   // Close menu when clicking the overlay (outside links)
@@ -64,9 +63,23 @@ function toggleMenu(toggle, nav) {
 /**
  * Close mobile menu
  */
-function closeMenu(toggle, nav) {
+function closeMenu(toggle, nav, instant = false) {
+  if (instant) {
+    // Remove transition for instant close
+    nav.style.transition = 'none';
+    toggle.style.transition = 'none';
+  }
+
   toggle.classList.remove('active');
   nav.classList.remove('active');
+
+  if (instant) {
+    // Restore transitions after a brief moment
+    setTimeout(() => {
+      nav.style.transition = '';
+      toggle.style.transition = '';
+    }, 50);
+  }
 }
 
 /**
