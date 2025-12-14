@@ -11,13 +11,14 @@
 }
 
 body {
-  font-family: Helvetica, sans-serif;
-  font-weight: lighter;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 300;
   background-color: black;
   color: white;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  line-height: 1.5;
 }
 
 header {
@@ -38,12 +39,12 @@ nav a {
   text-decoration: none;
   margin-left: 1.5rem;
   font-size: 2rem;
-  color: white !important;
+  color: white !important; /* make it white even though it's a link */
 }
 
 nav a:hover {
   text-decoration: underline;
-  color: white !important;
+  color: white !important; /* white link */
 }
 
 main {
@@ -54,7 +55,6 @@ footer {
   text-align: center;
   padding: 1rem;
   font-size: 0.85rem;
-  color: #aaa;
   font-family: "Kestia", Helvetica, sans-serif;
 }
 
@@ -81,7 +81,6 @@ html, body {
   display: block;
 }
 
-
 .content {
   max-width: 800px;
   margin: 3rem auto;
@@ -91,8 +90,7 @@ html, body {
 .content h1 {
   font-family: "Kestia", Helvetica, sans-serif;
   font-weight: normal;
-  /* margin-bottom: 1.5rem; increased gap */
-  margin-top: 3rem; /* added top margin for extra spacing */
+  margin-top: 3rem;
   font-size: 2.5rem;
 }
 
@@ -102,11 +100,4 @@ html, body {
   margin-bottom: -0.5rem;
   margin-top: 0.5rem;
   font-size: 1.5rem;
-}
-
-.content p {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: 340;
-  line-height: 1.7;
-  color: #ddd;
 }
