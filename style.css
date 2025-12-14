@@ -29,8 +29,7 @@ header {
 
 .logo {
   font-family: "Kestia", Helvetica, sans-serif;
-  font-size: 2.5rem;
-  letter-spacing: 0.08em;
+  font-size: 2rem;
 }
 
 nav a {
@@ -98,16 +97,16 @@ html, body {
 }
 
 .content h2 {
-  font-family: Helvetica, sans-serif;
+  font-family: "Kestia", Helvetica, sans-serif;
   font-weight: lighter;
-  /* margin-bottom: 0.1rem; */
+  margin-bottom: -0.5rem;
   margin-top: 0.5rem;
   font-size: 1.5rem;
 }
 
 .content p {
-  font-family: Helvetica, sans-serif;
-  font-weight: lighter;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 340;
   line-height: 1.7;
   color: #ddd;
 }
