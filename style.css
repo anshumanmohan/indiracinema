@@ -65,7 +65,7 @@ nav a:hover {
 .mobile-toggle {
   display: none;
   width: 30px;
-  height: 18px;  /* Changed from 24px */
+  height: 14px;  /* Changed from 18px */
   position: relative;
   cursor: pointer;
   padding: 0.5rem;
@@ -86,11 +86,11 @@ nav a:hover {
 }
 
 .mobile-toggle span:nth-child(2) {
-  top: 8px;
+  top: 6px;  /* Changed from 8px */
 }
 
 .mobile-toggle span:nth-child(3) {
-  top: 16px;
+  top: 12px;  /* Changed from 16px */
 }
 
 .mobile-toggle.active {
@@ -99,7 +99,7 @@ nav a:hover {
 }
 
 .mobile-toggle.active span:nth-child(1) {
-  top: 8px;  /* Changed from 11px */
+  top: 6px;  /* Changed from 8px */
   transform: rotate(45deg);
 }
 
@@ -108,7 +108,7 @@ nav a:hover {
 }
 
 .mobile-toggle.active span:nth-child(3) {
-  top: 8px;  /* Changed from 11px */
+  top: 6px;  /* Changed from 8px */
   transform: rotate(-45deg);
 }
 
@@ -171,8 +171,15 @@ footer {
    MOBILE STYLES
    ============================================ */
 @media (max-width: 768px) {
+  header {
+    padding: 1rem 1.5rem;
+    align-items: center;
+  }
+
   .mobile-toggle {
     display: flex;
+    padding: 0;
+    /* margin-right: 0.025rem; */
   }
 
   nav {
