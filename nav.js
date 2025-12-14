@@ -15,7 +15,7 @@ function initializeNavigation() {
 
   header.innerHTML = `
     <div class="logo">
-      <a href="index.html" style="color: inherit; text-decoration: none;">indira</a>
+      <a href="/" style="color: inherit; text-decoration: none;">indira</a>
     </div>
     <div class="mobile-toggle" id="mobileToggle">
       <span></span>
