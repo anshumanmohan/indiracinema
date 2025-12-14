@@ -64,8 +64,9 @@ nav a:hover {
 /* Mobile Toggle (Hamburger Menu) */
 .mobile-toggle {
   display: none;
-  flex-direction: column;
-  gap: 5px;
+  width: 30px;
+  height: 18px;  /* Changed from 24px */
+  position: relative;
   cursor: pointer;
   padding: 0.5rem;
 }
@@ -76,6 +77,20 @@ nav a:hover {
   background: white;
   transition: all 0.3s ease;
   display: block;
+  position: absolute;
+  left: 0;
+}
+
+.mobile-toggle span:nth-child(1) {
+  top: 0;
+}
+
+.mobile-toggle span:nth-child(2) {
+  top: 8px;
+}
+
+.mobile-toggle span:nth-child(3) {
+  top: 16px;
 }
 
 .mobile-toggle.active {
@@ -84,7 +99,8 @@ nav a:hover {
 }
 
 .mobile-toggle.active span:nth-child(1) {
-  transform: rotate(45deg) translate(7px, 7px);
+  top: 8px;  /* Changed from 11px */
+  transform: rotate(45deg);
 }
 
 .mobile-toggle.active span:nth-child(2) {
@@ -92,7 +108,8 @@ nav a:hover {
 }
 
 .mobile-toggle.active span:nth-child(3) {
-  transform: rotate(-45deg) translate(7px, -7px);
+  top: 8px;  /* Changed from 11px */
+  transform: rotate(-45deg);
 }
 
 /* ============================================
