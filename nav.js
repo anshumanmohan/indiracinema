@@ -23,7 +23,6 @@ function initializeNavigation() {
       <span></span>
     </div>
     <nav id="nav">
-      <a href="story.html">story</a>
       <a href="spaces.html">spaces</a>
       <a href="contact.html">contact</a>
     </nav>
