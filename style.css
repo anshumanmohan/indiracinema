@@ -76,7 +76,7 @@ nav a:hover {
 .mobile-toggle {
   display: none;
   width: 30px;
-  height: 14px;  /* Changed from 18px */
+  height: 14px;
   position: relative;
   cursor: pointer;
   padding: 0.5rem;
@@ -97,11 +97,11 @@ nav a:hover {
 }
 
 .mobile-toggle span:nth-child(2) {
-  top: 6px;  /* Changed from 8px */
+  top: 6px;
 }
 
 .mobile-toggle span:nth-child(3) {
-  top: 12px;  /* Changed from 16px */
+  top: 12px;
 }
 
 .mobile-toggle.active {
@@ -110,7 +110,7 @@ nav a:hover {
 }
 
 .mobile-toggle.active span:nth-child(1) {
-  top: 6px;  /* Changed from 8px */
+  top: 6px;
   transform: rotate(45deg);
 }
 
@@ -119,7 +119,7 @@ nav a:hover {
 }
 
 .mobile-toggle.active span:nth-child(3) {
-  top: 6px;  /* Changed from 8px */
+  top: 6px;
   transform: rotate(-45deg);
 }
 
@@ -128,23 +128,6 @@ nav a:hover {
    ============================================ */
 main {
   flex: 1;
-}
-
-.banner-container {
-  width: 100%;
-  height: 100vh;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.banner-container img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  display: block;
 }
 
 .content {
@@ -190,7 +173,6 @@ footer {
   .mobile-toggle {
     display: flex;
     padding: 0;
-    /* margin-right: 0.025rem; */
   }
 
   nav {

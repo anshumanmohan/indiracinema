@@ -22,50 +22,107 @@
   <link rel="icon" type="image/png" href="img/favicon.png" />
   <link rel="stylesheet" href="style.css" />
   <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 10;
+      background-color: rgba(123, 47, 47);
     }
 
     .banner-container {
+      position: fixed;
+      top: 0;
+      left: 0;
       width: 100%;
-      height: 100vh;       /* fill viewport height */
+      height: 100vh;
       overflow: hidden;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      z-index: 5;
+      transition: height 0.3s ease;
+    }
+
+    .banner-container.shrunk {
+      height: 200px;
     }
 
     .banner-container img {
       width: 100%;
       height: 100%;
-      object-fit: cover;      /* cover container while keeping aspect ratio */
-      object-position: center; /* always show central slice */
+      object-fit: cover;
+      object-position: center;
       display: block;
     }
 
-    @media (max-width: 600px) {
-      .banner-container img {
-        object-position: center center; /* vertical central slice on narrow screens */
-      }
+    .content-wrapper {
+      position: relative;
+      z-index: 2;
+      margin-top: 100vh;
+      background: rgba(123, 47, 47);
     }
   </style>
 </head>
 <body>
 
-<header></header>
-<script src="nav.js"></script>
+  <header></header>
+  <script src="nav.js"></script>
 
-
-
-  <main class="banner-container">
+  <div class="banner-container" id="banner">
     <img src="img/banner_color.jpg" alt="Indira Cinema Banner" />
-  </main>
+  </div>
 
-  <footer>
-    &copy; 2025 Indira Cinema, Kolkata
-  </footer>
+  <div class="content-wrapper">
+    <main class="content">
+      <h2>neighbourhood darling</h2>
+      <p>
+        Indira Cinema opened its doors on 8 July 1948 with the screening of <em>Sadharan Meye</em>.
+        Indira became a cultural landmark in the community, particularly known for successfully screening films featuring Bengal's biggest stars, especially Mahanayak Uttam Kumar. Satyajit Ray's <em>Nayak</em> premiered at Indira.
+      </p>
+
+      <h2>art deco gem</h2>
+      <p>
+        You may have already noticed the many playful quirks of Indira Cinema's architecture.
+        Formally, the building is in the Art Deco style.
+        Indira is not the only example of this style in India or even in Kolkata, but it certainly is our favourite!
+        The building's exterior was designed by MK Ghosh and its interiors were by Khagen Roy.
+      </p>
+
+      <h2>labour of love</h2>
+      <p>
+        The Indira you see today was crafted slowly and with care. The cement tiles in the bar and the Kathak room are original. The framed photos you see everywhere are not simple photos but untouched lobby cards—little promotional booklets—that were traded between film distributors.
+        Even the wooden panelling in the circular entrance was salvaged from the catwalk that once ran above the auditorium.
+        If something catches your eye at Indira, ask us about it. Chances are, we have a tale to tell!
+      </p>
+
+      <h2>looking forward</h2>
+      <p>
+        We are so excited to reestablish Indira as a vibrant cultural hub.
+        Cinema will always be our first love, but we're also interested in the arts more broadly.
+        Bring us your ideas, your enthusiasm, and your joy. We're finally ready.
+      </p>
+
+      <h2>further reading</h2>
+      <p>
+        For more about Indira's history, visit the incredible treasure trove that is the <a href="https://www.bengalfilmarchive.com/hall-details.php?h=Mzk%3D">Bengal Film Archive</a>.
+        The extraordinary Mudar Patherya wrote about Indira's architecture and its preservation in <a href="https://www.telegraphindia.com/my-kolkata/places/at-the-art-deco-indira-cinema-mudar-patherya-finds-the-story-of-a-mans-fight-to-preserve-a-piece-of-kolkata-heritage/cid/2004720">The Telegraph</a>.
+      </p>
+    </main>
+
+    <footer>
+      &copy; 2025 Indira Cinema, Kolkata
+    </footer>
+  </div>
+
+  <script>
+    const banner = document.getElementById('banner');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > window.innerHeight * 0.5) {
+        banner.classList.add('shrunk');
+      } else {
+        banner.classList.remove('shrunk');
+      }
+    });
+  </script>
 
 </body>
 </html>
