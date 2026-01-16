@@ -22,6 +22,11 @@
   <link rel="icon" type="image/png" href="img/favicon.png" />
   <link rel="stylesheet" href="style.css" />
   <style>
+    body {
+      display: block;
+      padding-top: 70px;
+    }
+
     header {
       position: fixed;
       top: 0;
@@ -32,14 +37,17 @@
     }
 
     .banner-container {
-      position: fixed;
+      position: sticky;
       top: 70px;
-      left: 0;
       width: 100%;
       height: calc(100vh - 70px);
       overflow: hidden;
+      transition: height 1s ease;
       z-index: 5;
-      transition: height 0.6s ease;
+    }
+
+    .banner-container.stuck {
+      /* No longer needed, always sticky */
     }
 
     .banner-container.shrunk {
@@ -52,13 +60,12 @@
       object-fit: cover;
       object-position: center;
       display: block;
+      will-change: auto;
     }
 
     .content-wrapper {
-      position: relative;
-      z-index: 2;
-      margin-top: calc(100vh - 70px + 70px);
       background: rgba(123, 47, 47);
+      padding-top: 4rem;
     }
   </style>
 </head>
@@ -115,13 +122,29 @@
 
   <script>
     const banner = document.getElementById('banner');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > window.innerHeight * 0.5) {
-        banner.classList.add('shrunk');
-      } else {
-        banner.classList.remove('shrunk');
-      }
+    let hasShrunken = false;
+
+    // Reset on page load
+    window.addEventListener('load', () => {
+      window.scrollTo(0, 0);
+      banner.classList.remove('shrunk');
+      hasShrunken = false;
     });
+
+    function updateBanner() {
+      if (hasShrunken) return; // Once shrunk, stay shrunk
+
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      const bannerHeight = window.innerHeight - 70;
+
+      // Shrink once we've scrolled a good amount through the banner
+      if (scrollTop > bannerHeight - 400) {
+        banner.classList.add('shrunk');
+        hasShrunken = true;
+      }
+    }
+
+    window.addEventListener('scroll', updateBanner);
   </script>
 
 </body>
