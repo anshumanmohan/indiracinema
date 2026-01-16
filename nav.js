@@ -23,8 +23,8 @@ function initializeNavigation() {
       <span></span>
     </div>
     <nav id="nav">
-      <a href="spaces.html">spaces</a>
-      <a href="contact.html">contact</a>
+      <a href="spaces">spaces</a>
+      <a href="contact">contact</a>
     </nav>
   `;
 }
@@ -89,10 +89,13 @@ function highlightActivePage() {
   const nav = document.getElementById('nav');
   if (!nav) return;
 
-  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+  // Get current page without .html extension
+  let currentPage = window.location.pathname.split('/').pop() || 'index.html';
+  currentPage = currentPage.replace('.html', '') || 'index';
 
   nav.querySelectorAll('a').forEach(link => {
-    if (link.getAttribute('href') === currentPage) {
+    const href = link.getAttribute('href');
+    if (href === currentPage || (currentPage === 'index' && href === '/')) {
       link.style.textDecoration = 'underline';
     }
   });
