@@ -36,35 +36,20 @@
       background-color: rgba(123, 47, 47);
     }
 
+    /* The track reserves a fixed slab of layout space (the hero's
+       full height). The photo shrinks *inside* it, so the content
+       below never reflows — that's what keeps the collapse smooth. */
+    .banner-track {
+      height: calc(100vh - 70px);
+    }
+
     .banner-container {
       position: sticky;
       top: 70px;
       width: 100%;
       height: calc(100vh - 70px);
       overflow: hidden;
-      transition: height 2s ease, position 0s 2s;
       z-index: 5;
-      padding-bottom: 20px;
-      margin-bottom: -20px;
-    }
-
-    .banner-container::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 20px;
-      background: rgba(123, 47, 47, 1);
-      z-index: 10;
-    }
-
-    .banner-container.shrunk {
-      height: 270px;
-      position: relative;
-      transition: height 2s ease, position 0s;
-      top: -70px;
-      margin-bottom: -70px;
     }
 
     .banner-container img {
@@ -73,34 +58,17 @@
       object-fit: cover;
       object-position: center;
       display: block;
-      will-change: auto;
     }
 
     .content-wrapper {
       background: rgba(123, 47, 47);
       position: relative;
+      z-index: 6;
     }
 
     .content {
       position: relative;
       z-index: 2;
-      padding-top: 0;
-    }
-
-    @media (max-width: 768px) {
-      .content {
-        padding-top: 0;
-        margin-top: 0;
-      }
-
-      .banner-container {
-        padding-bottom: 0;
-        margin-bottom: 0;
-      }
-
-      .banner-container.shrunk {
-        margin-bottom: -70px;
-      }
     }
   </style>
 </head>
@@ -109,8 +77,10 @@
   <header></header>
   <script src="nav.js"></script>
 
-  <div class="banner-container" id="banner">
-    <img src="img/banner.jpg" alt="Indira Cinema Banner" />
+  <div class="banner-track">
+    <div class="banner-container" id="banner">
+      <img src="img/banner.jpg" alt="Indira Cinema Banner" />
+    </div>
   </div>
 
   <div class="content-wrapper">
@@ -157,29 +127,36 @@
 
   <script>
     const banner = document.getElementById('banner');
-    let hasShrunken = false;
+    const HEADER_HEIGHT = 70;
+    const MIN_HEIGHT = 270;
 
-    // Reset on page load
-    window.addEventListener('load', () => {
-      window.scrollTo(0, 0);
-      banner.classList.remove('shrunk');
-      hasShrunken = false;
-    });
-
+    // The photo's height is a direct function of scroll position:
+    // it shrinks 1:1 with the scroll until it reaches the strip size.
+    // No timers, no thresholds — it tracks the scroll exactly.
     function updateBanner() {
-      if (hasShrunken) return; // Once shrunk, stay shrunk
-
+      const fullHeight = window.innerHeight - HEADER_HEIGHT;
       const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-      const bannerHeight = window.innerHeight - 70;
-
-      // Shrink earlier to prevent content from scrolling past the top
-      if (scrollTop > bannerHeight * 0.15) {
-        banner.classList.add('shrunk');
-        hasShrunken = true;
-      }
+      const height = Math.max(MIN_HEIGHT, fullHeight - scrollTop);
+      banner.style.height = height + 'px';
     }
 
-    window.addEventListener('scroll', updateBanner);
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          updateBanner();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
+
+    window.addEventListener('resize', updateBanner);
+    window.addEventListener('load', () => {
+      window.scrollTo(0, 0);
+      updateBanner();
+    });
+    updateBanner();
   </script>
 
 </body>
