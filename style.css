@@ -35,6 +35,20 @@ body {
   line-height: 1.5;
 }
 
+/* Hides content visually while keeping it available to screen readers. */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  overflow: hidden;
+  white-space: nowrap;
+}
+
 a {
   color: white;
   text-decoration: underline;
@@ -76,6 +90,13 @@ nav a:hover {
   opacity: 0.6;
 }
 
+/* Marks the current page in the nav */
+nav a.current {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 8px;
+}
+
 /* Mobile Toggle (Hamburger Menu) */
 .mobile-toggle {
   display: none;
@@ -84,6 +105,10 @@ nav a:hover {
   position: relative;
   cursor: pointer;
   padding: 0.5rem;
+  background: transparent;
+  border: 0;
+  -webkit-appearance: none;
+  appearance: none;
 }
 
 .mobile-toggle span {
