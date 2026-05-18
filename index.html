@@ -1,13 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- The <head> is hand-maintained across index.html, spaces.html and
+       contact.html — keep shared tags (charset, viewport, favicon,
+       stylesheet) in sync when editing any one of them. -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Indira Cinema</title>
   <meta name="description" content="A heritage single-screen filmhouse in Kolkata." />
+  <link rel="canonical" href="https://indiracinema.com/" />
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Indira Cinema" />
+  <meta property="og:locale" content="en_IN" />
   <meta property="og:url" content="https://indiracinema.com/" />
   <meta property="og:title" content="Indira Cinema" />
   <meta property="og:description" content="A heritage single-screen filmhouse in Kolkata" />
@@ -72,6 +78,33 @@
       z-index: 2;
     }
   </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MovieTheater",
+    "name": "Indira Cinema",
+    "description": "A heritage single-screen filmhouse in Kolkata.",
+    "url": "https://indiracinema.com/",
+    "image": "https://indiracinema.com/img/banner.jpg",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "2 Indra Roy Road",
+      "addressLocality": "Kolkata",
+      "addressRegion": "West Bengal",
+      "postalCode": "700025",
+      "addressCountry": "IN"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 22.5272,
+      "longitude": 88.3466
+    },
+    "sameAs": [
+      "https://www.instagram.com/indiracinema"
+    ]
+  }
+  </script>
 </head>
 <body>
 
