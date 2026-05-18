@@ -37,11 +37,14 @@ body {
 
 a {
   color: white;
-  text-decoration: none;
+  text-decoration: underline;
+  text-decoration-color: rgba(255, 255, 255, 0.45);
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
 }
 
 a:hover {
-  text-decoration: underline;
+  text-decoration-color: white;
 }
 
 /* ============================================
@@ -66,10 +69,11 @@ nav a {
   margin-left: 1.5rem;
   font-size: 2rem;
   color: white;
+  transition: opacity 0.15s ease;
 }
 
 nav a:hover {
-  text-decoration: underline;
+  opacity: 0.6;
 }
 
 /* Mobile Toggle (Hamburger Menu) */
