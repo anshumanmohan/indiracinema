@@ -191,6 +191,25 @@ footer {
 }
 
 /* ============================================
+   ROOMS (spaces page)
+   ============================================ */
+.room-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.room {
+  flex: 1 1 250px;
+}
+
+.room img {
+  width: 100%;
+  height: auto;
+}
+
+/* ============================================
    MOBILE STYLES
    ============================================ */
 @media (max-width: 768px) {
